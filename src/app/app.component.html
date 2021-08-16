@@ -1,0 +1,57 @@
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand">
+    Sistema de cualidades
+  </a>
+</nav>
+
+<div class="conteiner">
+  <div class="row">
+    <div class="col-md-8 mt-4">
+      <ul class="list-group">
+        <li *ngFor="Un empleado of EmpleadoArray"
+         class="list-group-item list-group-item-action"
+         (click)= "Editar(empleado)"
+         [class.active]="empleado == selectedEmpleado"
+         >
+
+         <span class="badge badge-primary">{{empleado.cedula}}</span>{{empleado.nombre}} - {{empleado.telefono}} - {{empleado.competencia}}
+
+        </li>
+
+      </ul>
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-title">
+            Agregar empleado
+          </div>
+          <div class="form-group">
+            <input type="text" [{ngModel}]="selectedEmpleado.nombre" placeholder="inserte el nombre" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" [{ngModel}]="selectedEmpleado.cedula" placeholder="inserte la cedula" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" [{ngModel}]="selectedEmpleado.telefono" placeholder="inserte el telefono" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" [{ngModel}]="selectedEmpleado.competencia" placeholder="inserte la competencia" class="form-control">
+          </div>
+
+          <button (click)="agregarOeditar()" class="btn btn-primary">
+             Enviar 
+          </button>
+          <button *ngIf="selectedEmpleado.id !==0 btn btn-danger" (click)="eliminar()">
+            Eliminar
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+   
+
+
+  </div>
+
+</div>
